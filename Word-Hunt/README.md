@@ -9,6 +9,34 @@ If you find that you can't win at Word Hunt, no matter how hard you try, take th
 If you don't have all your words in your wordList.txt file as ALL CAPS, you WILL GET A SEGMENT FAULT. I should probably change this, but it would effect the time it takes to run and I really don't want to sit down and code anymore. I spent too long on this project...
 
 
+## Usage
+There are two ways to use this project: Through the command line, or using the GUI.
+
+### GUI 🖼️🖼️🖼️
+The GUI interface is built using the Tkinter Python library, so having Python and Tkinter installed on your machine is a requirement for the program to run. 
+
+All you have to do is run the PYGUI.py and a popup should show up to load a word list. This word list will be used to check generated words, and a default has already been provided in the "/WordLists" folder.
+```console
+~$ python3 .\PYGUI.py
+```
+Select the word list you want to use:
+<img src="Images/fileSelect.png" width="400" height="200">
+
+Then enter in the letters on the word grid and click "Generate Solutions".
+
+
+### CLI 💲💲💲
+On windows, all you have to do is run the wordHuntSolver.exe executable. Linux needs to run the command:
+```console
+~$ ./wordHuntSolver
+```
+
+When presented, type in the name of the wordList you want to use.
+
+Next, type in the letters on the grid as they appear, from left to right, top to bottom.
+
+
+
 ## Compiling
 Inorder to compile the program succesfully, I would reccommend using the cross-compiler on Linux to build for windows.
 ```console

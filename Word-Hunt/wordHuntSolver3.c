@@ -1,9 +1,10 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include <ctype.h>
 #include <stdbool.h>
 //#include <windows.h>
-#include<unistd.h>
+#include <unistd.h>
 #define lengt 500;
 
 // We start by making a 26-aray tree since we have 26 letters in the alphabet
@@ -23,15 +24,19 @@ void print_trie(TrieNode* root);
 void print_search(TrieNode* root, char* word);
 void combo(int row, int col, char *word, char *board, bool visited[4][4], TrieNode *root,  int *num_solutions, char solutions[500][16]);
 
-
-TrieNode * load_trie();
-
+TrieNode * load_trie(char * filename);
 
 
-int main() {
-    
+
+int main(int argc, char * argv[]) {
+
+    if (argc < 2) {
+        printf("Usage: %s <filename>\n", argv[1]);
+        exit(1);
+    }
+
     // Load the trie from the file
-    TrieNode* root2 = load_trie();
+    TrieNode* root2 = load_trie(argv[1]);
 
     char choice = 'y';
     char board[16];
@@ -93,7 +98,7 @@ int main() {
 
         // Now we print the solutions
         for(int i = num_solutions-1; i >= 0; i--)
-            printf("%d: %s\n", strlen(solutions[i]), solutions[i]);
+            printf("%ld: %s\n", strlen(solutions[i]), solutions[i]);
         printf("Total number of solutions: %d\n", num_solutions);
 
 
@@ -196,30 +201,24 @@ void print_search(TrieNode* root, char* word) {
 
 
 
-TrieNode * load_trie(){
+TrieNode * load_trie(char * filename){
     printf("Please make sure the words are in ALL CAPS or else there will be a segment fault.\n");
     printf("Enter the name of your word list file without the \".txt\" extension: ");
-    char filename[20];
-
     FILE *fp;
-    scanf("%20s", filename);
+    /*
+    scanf("%s", filename);
     //appends ".txt" to the filename
     strcat(filename, ".txt");
     fp = fopen(filename, "r");
-    
+    */
+    fp = fopen(filename, "r");
     
     while(fp == NULL)
     {
         printf("Error opening file. Please make sure the file is in the same directory as the program and try again.\n");
-        scanf("%20s", filename);
-        //appends ".txt" to the filename
-        strcat(filename, ".txt");
-        fp = fopen(filename, "r");
+        exit(1);
     }
         printf("File opened successfully\n");
-
-
-
 
     TrieNode *root = make_trienode('\0');
     char word[20];
@@ -227,7 +226,7 @@ TrieNode * load_trie(){
     int counter = 0;
     while(fscanf(fp, "%s", word) == 1)
     {
-        printf("Word %d: %s\n", counter++, word); 
+        // printf("Word %d: %s\n", counter++, word); 
         root = insert_trie(root, word);
     }
 

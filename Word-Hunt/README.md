@@ -6,11 +6,13 @@ If you find that you can't win at Word Hunt, no matter how hard you try, take th
 
 ## ⚠️IMPORTANT⚠️
 
-If you don't have all your words in your wordList.txt file as ALL CAPS, you WILL GET A SEGMENT FAULT. I should probably change this, but it would effect the time it takes to run and I really don't want to sit down and code anymore. I spent too long on this project...
+* If you don't have all your words in your wordList.txt file as ALL CAPS, you WILL GET A SEGMENT FAULT. I should probably change this, but it would effect the time it takes to run and I really don't want to sit down and code anymore. I spent too long on this project...
+
+* ON GOING BUG: On windows builds, you need to alt-tab out of the program and alt-tab back in or else you wont be able to input letters into the grid. 
 
 
 ## Usage
-There are two ways to use this project: Through the command line, or using the GUI.
+To run this program, simply run the PYGUI.exe executable, load the DEFAULT word list, type the letters into the grid, and click generate answers. 
 
 ### GUI 🖼️🖼️🖼️
 The GUI interface is built using the Tkinter Python library, so having Python and Tkinter installed on your machine is a requirement for the program to run. 
@@ -42,3 +44,9 @@ Inorder to compile the program succesfully, I would reccommend using the cross-c
 ```console
 ~$ x86_64-w64-mingw32-gcc -o WordHunt.exe wordHuntSolver3.c
 ```
+
+# FUTURE Updates
+* Working on solving the Windows alt-tab bug.
+* Making the GUI much more modern.
+* Automatically switching to the next grid box after typign in the letter.
+* Writing a better README.MD

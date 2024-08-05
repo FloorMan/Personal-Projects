@@ -41,7 +41,7 @@ def executeCProg(filename, input):
     else:
         if "/mnt/" in filename:
             filename = filename.replace("/mnt/c/", "C:/")
-        print(filename)
+        #print(filename)
         os.system("./WordHunt.exe " + filename + " " + input)
     # subprocess.run(["./WordHunt.exe", filename, input])
     #print('Done')
